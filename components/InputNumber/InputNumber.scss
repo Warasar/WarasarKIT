@@ -1,0 +1,42 @@
+@import "../../styles/variables.scss";
+
+.inputNumber {
+  &-disabled {
+    background-color: $disabledColor !important;
+  }
+
+  input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6px 12px;
+    border: 1px solid $borderColor;
+    border-radius: 6px;
+    transition: 0.2s;
+    font-family: $font;
+    font-size: 14px;
+    background-color: $whiteColor;
+    user-select: text;
+    width: calc(100% - 24px);
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  input:focus {
+    background-color: $inputFocusBgColor;
+    transition: 0.2s;
+    outline: none !important;
+    border-color: #1677ff;
+
+    .pm-side-head-search-icon {
+      background-color: $inputFocusBgColor;
+    }
+  }
+}

@@ -1,0 +1,215 @@
+@import "../../styles/variables.scss";
+
+.dropdown {
+  border: 1px solid $borderColor;
+  border-radius: 6px;
+  background-color: $whiteColor;
+  transition: 0.2s;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto;
+
+  &:hover {
+    border: 1px solid $activeColor;
+    cursor: pointer;
+  }
+
+  &-text {
+    font-family: $font;
+    color: $textColor;
+    min-height: 36px;
+    padding: 0px 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  &-arrow {
+    background-color: #eee;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    &-icon {
+      width: 24px;
+      height: 24px;
+      background: url("../../images/chevron-down.svg");
+      background-position: center;
+      background-size: cover;
+      transform: rotate(180deg);
+      transition: 0.2s;
+
+      &_active {
+        width: 24px;
+        height: 24px;
+        background: url("../../images/chevron-down.svg");
+        background-position: center;
+        background-size: cover;
+        transition: 0.2s;
+      }
+    }
+  }
+
+  &-popover {
+    position: absolute;
+    top: 100%;
+    background-color: $whiteColor;
+    padding: 6px 12px;
+    border: 1px solid $borderColor;
+    width: calc(100% - 26px);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 3;
+  }
+
+  &-items {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    max-height: 600px;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #d2d2d2;
+    }
+  }
+
+  &-item {
+    padding: 6px 12px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px;
+    align-items: center;
+    transition: 0.2s;
+
+    &:hover {
+      background-color: $bgColor;
+    }
+
+    &-text {
+      font-family: $font;
+      font-size: 14px;
+      user-select: none;
+    }
+
+    &-arrow {
+      width: 24px;
+      height: 24px;
+      background: url("../../images/chevron-down.svg");
+      background-position: center;
+      background-size: cover;
+      transition: 0.2s;
+      transform: rotate(-90deg);
+      cursor: pointer;
+
+      &-active {
+        width: 24px;
+        height: 24px;
+        background: url("../../images/chevron-down.svg");
+        background-position: center;
+        background-size: cover;
+        transition: 0.2s;
+        cursor: pointer;
+      }
+    }
+
+    &-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 1px solid $borderColor;
+      border-radius: 3px;
+      transition: 0.2s;
+      margin-right: 5px;
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $activeColor;
+      }
+
+      &-active {
+        margin-right: 5px;
+        width: 20px;
+        height: 20px;
+        border: 1px solid $borderColor;
+        border-radius: 3px;
+        background: url("../../images/check.svg");
+        background-position: center;
+        background-size: cover;
+        transition: 0.2s;
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid $activeColor;
+        }
+      }
+    }
+  }
+
+  &-search {
+    position: relative;
+    input {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0.5vh 0.5vw;
+      gap: 0.625vw;
+      border: 1px solid $borderColor;
+      border-radius: 0.625vw;
+      transition: 0.2s;
+      font-family: $font;
+      font-size: 0.8vw;
+      background-color: $whiteColor;
+      user-select: text;
+      height: 3vh;
+      width: calc(100% - 1vw);
+    }
+
+    input:focus {
+      background-color: $inputFocusBgColor;
+      transition: 0.2s;
+      outline: none !important;
+      border-color: #1677ff;
+
+      .pm-side-head-search-icon {
+        background-color: $inputFocusBgColor;
+      }
+    }
+
+    &-absolute {
+      position: absolute;
+      z-index: 5;
+      right: 1px;
+      top: 1px;
+      border-left: 1px solid $borderColor;
+      background-color: $whiteColor;
+      transition: 0.2s;
+      width: 2.5vw;
+      height: calc(100% - 2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-right-radius: 0.625vw;
+      border-bottom-right-radius: 0.625vw;
+
+      &:hover &-icon {
+        cursor: pointer;
+        background: url("../../images/search_active.svg") no-repeat right;
+      }
+
+      &-icon {
+        background: url("../../images/search.svg") no-repeat;
+        width: 1.25vw;
+        height: 1.25vw;
+        background-size: cover;
+        transition: 0.2s;
+      }
+    }
+  }
+}

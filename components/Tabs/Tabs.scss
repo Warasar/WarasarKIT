@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+
+.tabs {
+  border-radius: 6px;
+  overflow: hidden;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  background-color: $whiteColor;
+
+  &-disabled {
+    background-color: $disabledColor;
+  }
+
+  &-item {
+    border-top: 1px solid $borderColor;
+    border-bottom: 1px solid $borderColor;
+    border-left: 1px solid $borderColor;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-family: $font;
+    transition: 0.2s;
+
+    &-disabled {
+      border-top: 1px solid $borderColor;
+      border-bottom: 1px solid $borderColor;
+      border-left: 1px solid $borderColor;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-family: $font;
+      transition: 0.2s;
+
+      &:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        border-right: 1px solid $borderColor;
+      }
+    }
+
+    &:first-child {
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      border-right: 1px solid $borderColor;
+    }
+
+    &:hover {
+      background-color: $activeColor;
+      color: $whiteColor;
+      cursor: pointer;
+    }
+
+    &-active {
+      background-color: $activeColor;
+      color: $whiteColor;
+    }
+  }
+}

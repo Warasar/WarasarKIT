@@ -1,0 +1,47 @@
+@import "../../styles/variables.scss";
+
+.warasar-checkbox {
+  width: 22px;
+  height: 22px;
+  border: 1px solid $borderColor;
+  border-radius: 6px;
+  background-color: white;
+  transition: 0.2s;
+
+  &:hover {
+    border-color: $activeColor;
+    cursor: pointer;
+  }
+
+  &-active {
+    width: 22px;
+    height: 22px;
+    border: 1px solid $borderColor;
+    border-radius: 6px;
+    transition: 0.2s;
+    background: url("./CheckboxIcons/check.svg");
+    background-size: cover;
+    background-color: $headerBg;
+    cursor: pointer;
+  }
+
+  &-disabled {
+    width: 22px;
+    height: 22px;
+    border: 1px solid $borderColor;
+    border-radius: 6px;
+    background-color: white;
+    transition: 0.2s;
+
+    &-active {
+      width: 22px;
+      height: 22px;
+      border: 1px solid $borderColor;
+      border-radius: 6px;
+      transition: 0.2s;
+      background: url("./CheckboxIcons/check_disabled.svg");
+      background-size: cover;
+      background-color: white;
+    }
+  }
+}

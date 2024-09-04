@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Golos-Medium";
+  src: url("../fonts/GolosText-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Golos-Bold";
+  src: url("../fonts/GolosText-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Golos-Regular";
+  src: url("../fonts/GolosText-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+$fontMedium: "Golos-Medium";
+$fontBold: "Golos-Bold";
+$font: "Golos-Regular";
+
+$bgColor: #f7f9f9;
+$borderColor: #e2e8f0;
+$textColor: #1e293b;
+$textWhite: #fff;
+$activeColor: #1677ff;
+$whiteColor: #fff;
+$disabledColor: #eeeeee;
+$inputFocusBgColor: #f1f5f9;
+
+$headerBg: #1890ff; //#f8fafc;
+$deleteColor: #ff4443;
+$disabledCell: #f5f5f5;

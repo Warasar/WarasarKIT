@@ -1,0 +1,72 @@
+@import "../../styles/variables.scss";
+
+.warasar-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+
+  &-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0.4;
+    z-index: 10;
+  }
+
+  &-container {
+    position: absolute;
+    border: 1px solid $borderColor;
+    border-radius: 0.625vw;
+    background-color: white;
+    z-index: 100;
+  }
+
+  &-title {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 12px 16px;
+    gap: 10px;
+    border-bottom: 1px solid $borderColor;
+
+    &-text {
+      font-size: 16px;
+      font-family: $fontMedium;
+      color: $textColor;
+    }
+
+    &-iconClose {
+      width: 24px;
+      height: 24px;
+      background: url("../../images/x-circle.svg");
+      background-position: center;
+      background-size: cover;
+      transition: 0.2s;
+      margin-right: 6px;
+      margin-left: 6px;
+
+      &:hover {
+        width: 24px;
+        height: 24px;
+        background: url("../../images/x-circle_active.svg");
+        background-position: center;
+        background-size: cover;
+        transition: 0.2s;
+        margin-right: 6px;
+        margin-left: 6px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-children {
+    padding: 12px 16px;
+  }
+}
