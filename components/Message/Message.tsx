@@ -4,10 +4,12 @@ import imageWarn from "../../images/warn-circle.svg";
 import imageInfo from "../../images/info-circle.svg";
 import imageError from "../../images/error-circle.svg";
 
+const className: string = "warasar-message";
+
 export const message: any = (text: string, type: string) => {
   let elem = document.createElement("div");
   elem.innerHTML = `${text}`;
-  elem.className = "message";
+  elem.className = className;
   elem.id = "message";
 
   var icon = document.createElement("img");

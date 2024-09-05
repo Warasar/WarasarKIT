@@ -5,13 +5,15 @@ type PropsType = {
   absolute?: boolean;
 };
 
+const className: string = "warasar-loader";
+
 export default function Loader({ absolute }: PropsType) {
   return absolute ? (
-    <div className="loader">
-      <div className="loader-bg" />
-      <div className="loader-icon" />
+    <div className={`${className}`}>
+      <div className={`${className}-bg`} />
+      <div className={`${className}-icon`} />
     </div>
   ) : (
-    <div className="loader-icon" />
+    <div className={`${className}-icon`} />
   );
 }

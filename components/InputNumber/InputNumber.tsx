@@ -9,6 +9,8 @@ type PropsType = {
   max?: number;
 };
 
+const className: string = "warasar-inputNumber";
+
 export default function InputNumber({
   value,
   disabled,
@@ -17,11 +19,11 @@ export default function InputNumber({
   max,
 }: PropsType) {
   return (
-    <div className={"inputNumber"}>
+    <div className={`${className}`}>
       <input
         disabled={disabled}
         type="number"
-        className={disabled ? "inputNumber-disabled" : ""}
+        className={disabled ? `${className}-disabled` : ""}
         onChange={(e: any) => {
           if (e.target.value.length > 0) {
             if (max && Number(e.target.value) > max) {

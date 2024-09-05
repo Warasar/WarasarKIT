@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Modal.scss";
 
 type PropsType = {
   open: boolean;
   onCancel: () => void;
+  onSave?: () => void;
   title?: any;
   children?: any;
   footer?: any;
+  width?: string;
 };
 
 const className: string = "warasar-modal";
@@ -14,11 +16,20 @@ const className: string = "warasar-modal";
 export default function Modal({
   open,
   onCancel,
+  onSave,
   title,
   children,
   footer,
+  width,
 }: PropsType) {
+  const [show, setShow] = useState<boolean>(false);
   const ref: any = useRef(null);
+
+  useEffect(() => {
+    if (open) {
+      setShow(true);
+    }
+  }, [open]);
 
   const useOutsideAlerter = (ref: any) => {
     useEffect(() => {
@@ -53,8 +64,18 @@ export default function Modal({
     return footer ? (
       footer.save && footer.decline ? (
         <div className={`${className}-footer`}>
-          <div className={`${className}-footer-save`}>{footer.save}</div>
-          <div className={`${className}-footer-decline`}>{footer.decline}</div>
+          <div />
+          <div
+            className={`${className}-footer-save${
+              footer.saveDisabled ? "-disabled" : ""
+            }`}
+            onClick={() => (onSave && !footer.saveDisabled ? onSave() : null)}
+          >
+            {footer.save}
+          </div>
+          <div className={`${className}-footer-decline`} onClick={onCancel}>
+            {footer.decline}
+          </div>
         </div>
       ) : (
         footer
@@ -62,11 +83,14 @@ export default function Modal({
     ) : null;
   };
 
-  /* {modalCode ? ( */
-  return (
-    <div className={`${className}`} style={{ display: open ? "flex" : "none" }}>
+  return show ? (
+    <div className={`${open ? className : `${className}-hidden`}`}>
       <div className={`${className}-bg`} />
-      <div className={`${className}-container`} ref={ref} style={{}}>
+      <div
+        className={`${className}-container`}
+        ref={ref}
+        style={{ width: width ? width : "auto" }}
+      >
         {renderTitle(title)}
         <div className={`${className}-children`}>
           {children ? children : "Нет данных"}
@@ -74,6 +98,5 @@ export default function Modal({
         {renderFooter(footer)}
       </div>
     </div>
-  );
+  ) : null;
 }
-/* ) : null} */

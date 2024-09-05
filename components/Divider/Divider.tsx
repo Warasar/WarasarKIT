@@ -5,12 +5,14 @@ type PropsType = {
   text: any;
 };
 
+const className: string = "warasar-divider";
+
 export default function Divider({ text }: PropsType) {
   return (
-    <div className="divider">
-      <div className="divider-border" />
-      <div className="divider-text">{text}</div>
-      <div className="divider-border" />
+    <div className={`${className}`}>
+      <div className={`${className}-border`} />
+      <div className={`${className}-text`}>{text}</div>
+      <div className={`${className}-border`} />
     </div>
   );
 }

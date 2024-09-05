@@ -12,6 +12,8 @@ type PropsType = {
   parentField?: string;
 };
 
+const className: string = "warasar-dropdown";
+
 export default function DropDownBox({
   data,
   value,
@@ -71,7 +73,7 @@ export default function DropDownBox({
       jsx.push(
         <Fragment>
           <div
-            className="dropdown-item"
+            className={`${className}-item`}
             onDoubleClick={() =>
               !parentFld ||
               (parentFld &&
@@ -88,7 +90,7 @@ export default function DropDownBox({
             (parentFld &&
               !treeData.some((f: any) => f[parentFld] === item[valueFld])) ? (
               <div
-                className={`dropdown-item-checkbox${
+                className={`${className}-item-checkbox${
                   value?.[valueFld] === item[valueFld] ? "-active" : ""
                 }`}
                 onClick={() =>
@@ -99,13 +101,13 @@ export default function DropDownBox({
               />
             ) : (
               <div
-                className={`dropdown-item-arrow${
+                className={`${className}-item-arrow${
                   item.collapse ? "-active" : ""
                 }`}
                 onClick={() => collapseChange(item)}
               />
             )}
-            <div className="dropdown-item-text">{item[nameFld]}</div>
+            <div className={`${className}-item-text`}>{item[nameFld]}</div>
           </div>
 
           {item.collapse &&
@@ -228,15 +230,17 @@ export default function DropDownBox({
 
   return (
     <div style={{ position: "relative" }}>
-      <div className="dropdown" onClick={() => setShow(!show)}>
-        <div className="dropdown-text">{value?.[nameFld]}</div>
-        <div className="dropdown-arrow">
-          <div className={"dropdown-arrow-icon" + (show ? "_active" : "")} />
+      <div className={`${className}`} onClick={() => setShow(!show)}>
+        <div className={`${className}-text`}>{value?.[nameFld]}</div>
+        <div className={`${className}-arrow`}>
+          <div
+            className={`${className}-arrow-icon` + (show ? "_active" : "")}
+          />
         </div>
       </div>
       {show ? (
-        <div className="dropdown-popover" ref={ref}>
-          <div className={`dropdown-search`}>
+        <div className={`${className}-popover`} ref={ref}>
+          <div className={`${className}-search`}>
             <input
               type="text"
               placeholder="Поиск"
@@ -247,14 +251,14 @@ export default function DropDownBox({
               onKeyDown={(e: any) => handleKeyDown(e)}
             />
             <div
-              className={`dropdown-search-absolute`}
+              className={`${className}-search-absolute`}
               onClick={() => searchFunc()}
               title="Поиск"
             >
-              <div className={`dropdown-search-absolute-icon`} />
+              <div className={`${className}-search-absolute-icon`} />
             </div>
           </div>
-          <div className="dropdown-items">
+          <div className={`${className}-items`}>
             {tree.length === 0 ? (
               <Empty text="Нет данных для отображения" />
             ) : (

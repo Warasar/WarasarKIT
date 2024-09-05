@@ -8,6 +8,8 @@ type PropsType = {
   disabled?: boolean;
 };
 
+const className: string = "warasar-tabs";
+
 export default function Tabs({
   data,
   value,
@@ -15,12 +17,14 @@ export default function Tabs({
   onValueChanged,
 }: PropsType) {
   return (
-    <div className={"tabs" + (disabled ? " tabs-disabled" : "")}>
+    <div
+      className={`${className}` + (disabled ? ` ${className}-disabled` : "")}
+    >
       {data.map((item: any) => {
         return (
           <div
             className={
-              (disabled ? "tabs-item-disabled" : "tabs-item") +
+              (disabled ? `${className}-item-disabled` : `${className}-item`) +
               (value === item.value && !disabled ? " tabs-item-active" : "")
             }
             onClick={() => (!disabled ? onValueChanged(item.value) : null)}

@@ -8,6 +8,8 @@ type Props = {
   maxHeight?: string;
 };
 
+const className: string = "warasar-dataGrid";
+
 function DataGrid({ children, dataSource, maxHeight }: Props) {
   const [defaultData, setDefaultData] = useState<any>(null);
   const [filteredData, setFilteredData] = useState<any>(null);
@@ -71,16 +73,16 @@ function DataGrid({ children, dataSource, maxHeight }: Props) {
 
   return (
     <div
-      className="dataGrid"
+      className={`${className}`}
       style={{
         height: "auto",
         width: "auto",
         maxHeight: maxHeight ? maxHeight : "60vh",
       }}
     >
-      <div className="dataGrid-head">
+      <div className={`${className}-head`}>
         <div
-          className="dataGrid-header"
+          className={`${className}-header`}
           style={{ gridTemplateColumns: gridColsHeader }}
         >
           {headerElems}
@@ -91,9 +93,13 @@ function DataGrid({ children, dataSource, maxHeight }: Props) {
           columns={headerElems}
           filteredData={filteredData}
           gridCols={gridColsRows}
+          className={className}
         />
       ) : (
-        <div className="emptyDataGrid" style={{ width: "calc(100% - 24px)" }}>
+        <div
+          className={`${className}-empty`}
+          style={{ width: "calc(100% - 24px)" }}
+        >
           Нет данных
         </div>
       )}
