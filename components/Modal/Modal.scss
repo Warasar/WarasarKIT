@@ -75,6 +75,37 @@
     gap: 10px;
     border-top: 1px solid $borderColor;
 
+    &-delete {
+      padding: 6px 12px;
+      font-size: 14px;
+      font-family: $font;
+      color: $textColor;
+      background-color: white;
+      transition: 0.2s;
+      border-radius: 8px;
+      user-select: none;
+      border: 1px solid $borderColor;
+
+      &-disabled {
+        padding: 6px 12px;
+        font-size: 14px;
+        font-family: $font;
+        color: $textColor;
+        background-color: white;
+        border-radius: 8px;
+        border: 1px solid $borderColor;
+        user-select: none;
+        background-color: $disabledColor;
+        cursor: no-drop;
+      }
+
+      &:hover {
+        border-color: $deleteColor;
+        color: $deleteColor;
+        cursor: pointer;
+      }
+    }
+
     &-save {
       padding: 6px 12px;
       font-size: 14px;

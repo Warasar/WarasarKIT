@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Select.scss";
 import Empty from "../Empty/Empty";
+import Input from "../Input/Input";
 
 type PropsType = {
   data: any;
@@ -111,7 +112,7 @@ export default function Select({
   }, [show]);
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", height: "calc(100% - 1px)" }}>
       <div
         className={
           `${className}` +
@@ -121,25 +122,17 @@ export default function Select({
         id={`${className}_${id}`}
         style={{
           border: dontShowBorder ? "none" : "1px solid #E2E8F0",
-          borderRadius: borderRadius ? borderRadius : "6px",
+          borderRadius: borderRadius
+            ? borderRadius
+            : dontShowBorder
+            ? "0px"
+            : "6px",
           gridTemplateColumns: value ? "1fr auto auto" : "1fr auto",
         }}
       >
-        <input
-          className={`${className}-text`}
-          id={`${className}-input_` + id}
+        <Input
+          key={`${className}-input_` + id}
           disabled={disabled}
-          autoComplete="off"
-          type="text"
-          placeholder={placeholder ? placeholder : ""}
-          onChange={(e: any) => {
-            setSearchActive(true);
-            setSearchValue(e.target.value);
-          }}
-          onClick={() => (disabled ? null : setShow(!show))}
-          onFocus={() => {
-            return show ? true : false;
-          }}
           value={
             searchActive
               ? searchValue
@@ -147,6 +140,18 @@ export default function Select({
               ? value?.[nameExpr]
               : ""
           }
+          onValueChanged={(e: any) => {
+            setSearchActive(true);
+            setSearchValue(e.target.value);
+          }}
+          textAlign={"start"}
+          placeholder={placeholder ? placeholder : ""}
+          onClick={() => (disabled ? null : setShow(!show))}
+          onFocus={() => {
+            return show ? true : false;
+          }}
+          noBorder
+          size={"small"}
         />
         {value && !dontShowClear ? (
           <div
@@ -163,7 +168,6 @@ export default function Select({
             }}
           />
         ) : null}
-
         {!dontShowArrow ? (
           <div
             className={`${className}-arrow`}

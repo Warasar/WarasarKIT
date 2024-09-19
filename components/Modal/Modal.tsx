@@ -9,6 +9,7 @@ type PropsType = {
   children?: any;
   footer?: any;
   width?: string;
+  maxWidth?: string;
 };
 
 const className: string = "warasar-modal";
@@ -21,9 +22,10 @@ export default function Modal({
   children,
   footer,
   width,
+  maxWidth,
 }: PropsType) {
-  const [show, setShow] = useState<boolean>(false);
   const ref: any = useRef(null);
+  const [show, setShow] = useState<boolean>(false);
 
   useEffect(() => {
     if (open) {
@@ -55,7 +57,11 @@ export default function Modal({
         ) : (
           title
         )}
-        <div className={`${className}-title-iconClose`} onClick={onCancel} />
+        <div
+          className={`${className}-title-iconClose`}
+          onClick={onCancel}
+          title="Закрыть"
+        />
       </div>
     ) : null;
   };
@@ -66,9 +72,9 @@ export default function Modal({
         <div className={`${className}-footer`}>
           <div />
           <div
-            className={`${className}-footer-save${
-              footer.saveDisabled ? "-disabled" : ""
-            }`}
+            className={`${className}-footer-${
+              footer.saveType ? footer.saveType : "save"
+            }${footer.saveDisabled ? "-disabled" : ""}`}
             onClick={() => (onSave && !footer.saveDisabled ? onSave() : null)}
           >
             {footer.save}
@@ -89,7 +95,10 @@ export default function Modal({
       <div
         className={`${className}-container`}
         ref={ref}
-        style={{ width: width ? width : "auto" }}
+        style={{
+          width: width ? width : "auto",
+          maxWidth: maxWidth ? maxWidth : "none",
+        }}
       >
         {renderTitle(title)}
         <div className={`${className}-children`}>

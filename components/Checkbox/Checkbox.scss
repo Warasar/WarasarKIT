@@ -30,7 +30,7 @@
     height: 22px;
     border: 1px solid $borderColor;
     border-radius: 6px;
-    background-color: white;
+    background-color: $disabledCell;
     transition: 0.2s;
 
     &-active {
@@ -41,7 +41,7 @@
       transition: 0.2s;
       background: url("./CheckboxIcons/check_disabled.svg");
       background-size: cover;
-      background-color: white;
+      background-color: $disabledCell;
     }
   }
 }

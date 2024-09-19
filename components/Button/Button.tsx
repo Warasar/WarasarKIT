@@ -8,6 +8,8 @@ type PropsType = {
   type?: string;
   size?: string;
   id?: string;
+  icon?: any;
+  iconPosition?: "left" | "right";
 };
 
 const className: string = "warasar-button";
@@ -19,17 +21,25 @@ export default function Button({
   type,
   size,
   id,
+  icon,
+  iconPosition,
 }: PropsType) {
   return (
     <div
       className={
         disabled ? `${className}-disabled` : `${className} ${className}-${type}`
       }
-      onClick={disabled ? () => {} : onClick}
+      onClick={onClick}
       style={size === "small" ? { fontSize: "12px" } : {}}
       id={id ? id : `${className}${text}`}
     >
+      {icon && (!iconPosition || iconPosition === "left") ? (
+        <div className={`${className}-icon`}>{icon}</div>
+      ) : null}
       {text}
+      {icon && iconPosition === "right" ? (
+        <div className={`${className}-icon`}>{icon}</div>
+      ) : null}
     </div>
   );
 }

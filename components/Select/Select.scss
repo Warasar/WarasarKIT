@@ -43,30 +43,6 @@
     }
   }
 
-  input {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 6px 12px;
-    border: none;
-    transition: 0.2s;
-    background-color: $whiteColor;
-    user-select: text;
-    width: calc(100% - 24px);
-    height: calc(100% - 12px);
-  }
-
-  input:focus {
-    background-color: $inputFocusBgColor;
-    transition: 0.2s;
-    outline: none !important;
-    border-color: #1677ff;
-
-    .pm-side-head-search-icon {
-      background-color: $inputFocusBgColor;
-    }
-  }
-
   &-text {
     font-family: $font;
     font-size: 12px;
@@ -106,6 +82,7 @@
   &-popover {
     position: absolute;
     top: 100%;
+    left: -1px;
     background-color: $whiteColor;
     border: 1px solid $borderColor;
     width: 100%;

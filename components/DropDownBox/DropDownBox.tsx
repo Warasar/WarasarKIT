@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import "./DropDownBox.scss";
 import _ from "lodash";
 import Empty from "../Empty/Empty";
+import Input from "../Input/Input";
 
 type PropsType = {
   data: any;
@@ -241,14 +242,12 @@ export default function DropDownBox({
       {show ? (
         <div className={`${className}-popover`} ref={ref}>
           <div className={`${className}-search`}>
-            <input
-              type="text"
-              placeholder="Поиск"
-              onChange={(e: any) => {
-                setSearch(e.target.value);
-              }}
-              value={search}
+            <Input
+              value={value}
+              onValueChanged={setSearch}
               onKeyDown={(e: any) => handleKeyDown(e)}
+              textAlign={"start"}
+              placeholder="Поиск"
             />
             <div
               className={`${className}-search-absolute`}
