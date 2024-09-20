@@ -23,6 +23,7 @@ type PropsType = {
 };
 
 const className: string = `warasar-input`;
+const isNumber = require("is-number");
 
 export default function Input({
   value,
@@ -59,6 +60,25 @@ export default function Input({
 
     return classname;
   };
+  const checkTypeToSave = (e: any) => {
+    if (type === "number") {
+      if (
+        isNumber(e.target.value) ||
+        e.target.value === null ||
+        !e.target.value?.length ||
+        e.target.value === "."
+      ) {
+        onValueChanged(e);
+      }
+    } else {
+      onValueChanged(e);
+    }
+  };
+  const checkTypeToChange = (e: any) => {
+    if (onKeyDown) {
+      onKeyDown(e);
+    }
+  };
 
   return (
     <div className={`${className}${size ? `-${size}` : "-medium"}`}>
@@ -71,8 +91,8 @@ export default function Input({
         type={type ? type : "string"}
         className={getClassName()}
         value={value}
-        onChange={onValueChanged}
-        onKeyDown={(e: any) => (onKeyDown ? onKeyDown(e) : null)}
+        onChange={(e: any) => checkTypeToSave(e)}
+        onKeyDown={(e: any) => checkTypeToChange(e)}
         onBlur={(e: any) => (onBlur ? onBlur(e) : null)}
         step={type === "number" ? (step ? step : 1) : ""}
         autoFocus={autoFocus}
