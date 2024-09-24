@@ -171,32 +171,10 @@
     justify-content: center;
     animation: hiden 0.3s forwards;
     -webkit-animation: hiden 0.3s forwards;
-    -moz-animation: hiden 0.3s forwards;
+    -moz-animation: hidenFireFox 0.3s forwards;
   }
 }
 
-@-webkit-keyframes shown {
-  from {
-    opacity: 0;
-    top: -100%;
-  }
-
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-@-moz-keyframes shown {
-  from {
-    opacity: 0;
-    top: -100%;
-  }
-
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
 @keyframes shown {
   from {
     opacity: 0;
@@ -209,30 +187,6 @@
   }
 }
 
-@-webkit-keyframes hiden {
-  0% {
-    top: 0;
-    opacity: 1;
-  }
-
-  100% {
-    top: -100%;
-    opacity: 0;
-    display: none;
-  }
-}
-@-moz-keyframes hiden {
-  0% {
-    top: 0;
-    opacity: 1;
-  }
-
-  100% {
-    top: -100%;
-    opacity: 0;
-    display: none;
-  }
-}
 @keyframes hiden {
   0% {
     top: 0;
@@ -243,5 +197,19 @@
     top: -100%;
     opacity: 0;
     display: none;
+  }
+}
+
+@keyframes hidenFireFox {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: -100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
   }
 }
