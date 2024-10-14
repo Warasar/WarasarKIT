@@ -11,6 +11,12 @@
   height: 100%;
   width: calc(100% - 1px);
 
+  &-frozen {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+  }
+
   &:hover {
     border: 1px solid $activeColor;
     cursor: pointer;

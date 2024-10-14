@@ -20,6 +20,7 @@ type PropsType = {
   placeholder?: string;
   onClick?: (e: any) => void;
   onFocus?: (e: any) => void;
+  style?: any;
 };
 
 const className: string = `warasar-input`;
@@ -42,6 +43,7 @@ export default function Input({
   placeholder,
   onClick,
   onFocus,
+  style,
 }: PropsType) {
   const getClassName = () => {
     let classname: string = "";
@@ -81,7 +83,10 @@ export default function Input({
   };
 
   return (
-    <div className={`${className}${size ? `-${size}` : "-medium"}`}>
+    <div
+      className={`${className}${size ? `-${size}` : "-medium"}`}
+      style={style ? style : {}}
+    >
       <input
         style={{
           borderRadius: borderRadius ? borderRadius : "6px",
@@ -90,7 +95,7 @@ export default function Input({
         disabled={disabled}
         type={type ? type : "string"}
         className={getClassName()}
-        value={value}
+        value={value ? value : undefined}
         onChange={(e: any) => checkTypeToSave(e)}
         onKeyDown={(e: any) => checkTypeToChange(e)}
         onBlur={(e: any) => (onBlur ? onBlur(e) : null)}

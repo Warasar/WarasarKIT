@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Select.scss";
 import Empty from "../Empty/Empty";
 import Input from "../Input/Input";
+import { getLeft } from "../../../../components/Table/TableFunc/TableFunc";
 
 type PropsType = {
   data: any;
@@ -18,6 +19,9 @@ type PropsType = {
   popoverWidth?: string;
   popoverMaxHeight?: string;
   borderRadius?: string;
+  width?: string;
+  rowFrozenLeft?: any;
+  isFrozen?: boolean;
 };
 
 const className = "warasar-select";
@@ -37,6 +41,9 @@ export default function Select({
   popoverWidth,
   popoverMaxHeight,
   borderRadius,
+  width,
+  rowFrozenLeft,
+  isFrozen,
 }: PropsType) {
   const [show, setShow] = useState<boolean>(false);
   const [showData, setShowData] = useState<any>([]);
@@ -112,7 +119,23 @@ export default function Select({
   }, [show]);
 
   return (
-    <div style={{ position: "relative", height: "calc(100% - 1px)" }}>
+    <div
+      style={
+        isFrozen
+          ? {
+              position: "sticky",
+              zIndex: "3",
+              left: getLeft(rowFrozenLeft, { code: id }),
+              height: "calc(100% - 1px)",
+              width: width ? width : "100%",
+            }
+          : {
+              position: "relative",
+              height: "calc(100% - 1px)",
+              width: width ? width : "100%",
+            }
+      }
+    >
       <div
         className={
           `${className}` +

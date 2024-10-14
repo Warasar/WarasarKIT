@@ -4,7 +4,7 @@ import "./Button.scss";
 type PropsType = {
   text: string;
   onClick: (e?: any) => void;
-  disabled?: boolean;
+  disabled?: any;
   type?: string;
   size?: string;
   id?: string;
